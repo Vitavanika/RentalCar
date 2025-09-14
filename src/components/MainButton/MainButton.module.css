@@ -1,0 +1,47 @@
+.button {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Default (filled blue) */
+.default {
+    background-color: #3470ff;
+    color: #ffffff;
+}
+
+.default:hover {
+    background-color: #1e90ff;
+}
+
+/* Outline variant */
+.outline {
+    background-color: transparent;
+    border: 2px solid #3470ff;
+    color: #3470ff;
+}
+
+.outline:hover {
+    background-color: #3470ff;
+    color: #ffffff;
+}
+
+/* Disabled variant */
+.disabled {
+    background-color: #d3d3d3;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+.text {
+    margin: 0;
+}

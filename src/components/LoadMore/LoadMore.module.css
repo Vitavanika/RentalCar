@@ -1,27 +1,40 @@
-.overlay {
+.wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 40px;
-    width: 100%;
+    margin-top: 32px;
 }
 
-.spinner {
+.button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: #3470ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #1e90ff;
+}
+
+.disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.loader {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 18px;
+    gap: 8px;
     animation: pulse 1.2s infinite ease-in-out;
 }
 
 .car {
-    font-size: 24px;
+    font-size: 20px;
     animation: drive 1.2s infinite linear;
-}
-
-.text {
-    color: #3470ff;
-    font-weight: 600;
 }
 
 @keyframes drive {
@@ -30,7 +43,7 @@
     }
 
     50% {
-        transform: translateX(8px);
+        transform: translateX(6px);
     }
 
     100% {
