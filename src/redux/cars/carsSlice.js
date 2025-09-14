@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCars, fetchFilteredCars } from './carsOperations';
+import { fetchCars, fetchFilteredCars, fetchCarById } from './carsOperations';
 
 const initialState = {
   items: [],
@@ -8,6 +8,7 @@ const initialState = {
   totalCars: 0,
   totalPages: 0,
   isLoading: false,
+  selectedCar: null,
   error: null,
 };
 
@@ -22,12 +23,13 @@ const carsSlice = createSlice({
       .addCase(fetchCars.pending, (state) => {
         state.isLoading = true;
       })
+
       .addCase(fetchCars.fulfilled, (state, action) => {
-        const { cars, totalCars, totalPages, page } = action.payload;
-        state.items = [...state.items, ...cars];
-        state.totalCars = totalCars;
-        state.totalPages = totalPages;
-        state.page = Number(page) + 1;
+        const { cars } = action.payload;
+        state.items = Array.isArray(cars) ? cars : [];
+        state.totalCars = action.payload.totalCars || 0;
+        state.totalPages = action.payload.totalPages || 0;
+        state.page = Number(action.payload.page) || 1;
         state.isLoading = false;
       })
 
@@ -35,9 +37,23 @@ const carsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+
+      .addCase(fetchCarById.fulfilled, (state, action) => {
+        state.selectedCar = action.payload;
+        state.isLoading = false;
+      })
+
       .addCase(fetchFilteredCars.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.page = 2;
+        const { cars } = action.payload;
+        if (Array.isArray(cars)) {
+          state.items = cars;
+        } else {
+          state.items = [];
+          console.warn('Expected array, got:', action.payload);
+        }
+        state.page = 1;
+        state.totalCars = action.payload.totalCars || 0;
+        state.totalPages = action.payload.totalPages || 0;
         state.isLoading = false;
       });
   },

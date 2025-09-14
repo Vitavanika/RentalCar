@@ -1,23 +1,17 @@
-import styles from './CardsBlock.module.css';
-import { useSelector } from 'react-redux';
-import { selectCars } from '../../redux/cars/carsSelectors';
-import { CarCard } from '../CarCard/CarCard';
-import LoadMore from '../LoadMore/LoadMore';
+import styles from './RentalForm.module.css';
 
-const CardsBlock = () => {
-  const cars = useSelector(selectCars);
-
+const RentalForm = () => {
   return (
-    <div className={styles.cardsBlock}>
-      <div className={styles.gallery}>
-        {cars.map((car) => (
-          <CarCard key={car.id} car={car} />
-        ))}
-      </div>
-
-      <LoadMore />
-    </div>
+    <form className={styles.form}>
+      <h2 className={styles.formTitle}>Book your car now</h2>
+      <p className={styles.formDescription}>Stay connected! We are always ready to help you.</p>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="date" required />
+      <textarea placeholder="Comment" rows="4" />
+      <button type="submit">Send</button>
+    </form>
   );
 };
 
-export default CardsBlock;
+export default RentalForm;

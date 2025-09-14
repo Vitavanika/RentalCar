@@ -1,0 +1,116 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding-block: 48px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+
+  width: 640px;
+  gap: 40px;
+}
+
+.image {
+  border-radius: 19px;
+  height: 512px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* .form {
+  max-width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  padding: 32px;
+  width: 640px;
+  height: 488px;
+
+  background: #fff;
+
+} */
+
+
+.formInput {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 700;
+  margin: 0;
+}
+
+.location {
+  font-size: 18px;
+  color: #555;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #3470ff;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+  color: #333;
+}
+
+.loading {
+  padding: 48px;
+  text-align: center;
+  font-size: 20px;
+  color: #888;
+}
+
+/* 📱 Адаптивність */
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .form {
+    width: 100%;
+  }
+}

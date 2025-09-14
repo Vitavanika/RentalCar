@@ -4,6 +4,10 @@
     box-sizing: border-box;
   }
 
+  #root {
+    padding-top: 68px;
+  }
+
   body,
   html {
     font-family: 'Inter', sans-serif;
@@ -39,8 +43,8 @@
     font-family: inherit;
     background-color: #4169E1;
     color: #FFFFFF;
-    padding: 12px 24px;
     border-radius: 8px;
+
     font-weight: 600;
     font-size: 16px;
     border: none;

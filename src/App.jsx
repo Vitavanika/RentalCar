@@ -5,7 +5,7 @@ import { fetchBrands } from './redux/filters/filtersOperations';
 import { Routes, Route } from 'react-router';
 import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
-//import CarDetailsPage from './pages/CarDetailsPage';
+import CarDetailsPage from './pages/CarDetailsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/catalog" element={<CatalogPage />} />
-      {/* <Route path="/catalog/:id" element={<CarDetailsPage />} /> */}
+      <Route path="/catalog/:id" element={<CarDetailsPage />} />
     </Routes>
   );
 }

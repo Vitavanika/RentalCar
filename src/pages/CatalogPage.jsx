@@ -17,14 +17,16 @@ const CatalogPage = () => {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (location.state?.scrollTo === 'filters' && filtersRef.current) {
-      setTimeout(() => {
+useEffect(() => {
+  if (location.state?.scrollTo === 'filters') {
+    setTimeout(() => {
+      if (filtersRef.current) {
         filtersRef.current.scrollIntoView({ behavior: 'smooth' });
         inputRef.current?.focus();
-      }, 100);
-    }
-  }, [location]);
+      }
+    }, 100);
+  }
+}, [location]);
 
   return (
     <>
