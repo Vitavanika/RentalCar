@@ -11,15 +11,18 @@
     flex-direction: row;
     width: 276px;
     height: 44px;
-    
+
     font-family: "Manrope", sans-serif;
     font-size: 16px;
     font-weight: 600;
     border-radius: 12px;
     line-height: 125%;
-    background-color: #3470ff;
-    color: white;
-
+    color: #101828;
+    background-color: white;
+    border: 1px solid #3470ff;
+    width: 156px;
+    height: 44px;
+    margin: 80px auto;
     transition: background-color 0.3s ease;
 }
 

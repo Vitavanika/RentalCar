@@ -21,26 +21,6 @@
   object-fit: cover;
 }
 
-/* .form {
-  max-width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 24px;
-
-  border: 1px solid #dadde1;
-  border-radius: 10px;
-  padding: 32px;
-  width: 640px;
-  height: 488px;
-
-  background: #fff;
-
-} */
-
-
 .formInput {
   display: flex;
   align-items: flex-start;
@@ -48,8 +28,6 @@
   flex-direction: column;
   gap: 16px;
 }
-
-
 
 .rightColumn {
   display: flex;
