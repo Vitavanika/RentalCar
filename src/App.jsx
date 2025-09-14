@@ -1,4 +1,3 @@
-import './App.module.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchBrands } from './redux/filters/filtersOperations';

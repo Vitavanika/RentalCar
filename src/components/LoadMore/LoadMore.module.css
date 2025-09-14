@@ -5,14 +5,21 @@
 }
 
 .button {
-    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 276px;
+    height: 44px;
+    
+    font-family: "Manrope", sans-serif;
     font-size: 16px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 12px;
+    line-height: 125%;
     background-color: #3470ff;
     color: white;
-    border: none;
-    cursor: pointer;
+
     transition: background-color 0.3s ease;
 }
 
