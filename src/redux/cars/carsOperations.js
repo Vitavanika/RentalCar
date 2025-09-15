@@ -1,37 +1,29 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { API_BASE_URL } from '../../config/apiConfig';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config/apiConfig';
 
 axios.defaults.baseURL = API_BASE_URL;
 
 export const fetchCars = createAsyncThunk(
-  'cars/fetchCars',
-  async ({ page, filters }, { rejectWithValue }) => {
+  'cars/fetchAll',
+  async ({ page, filters }, thunkAPI) => {
     try {
       const { brand, price, mileageFrom, mileageTo } = filters;
       const params = {
         page,
         limit: 12,
+        brand: brand || undefined,
+        rentalPrice: price || undefined,
+        mileage: {
+          from: mileageFrom || undefined,
+          to: mileageTo || undefined,
+        },
       };
 
-      if (brand) {
-        params.make = brand;
-      }
-      if (price) {
-        params.rentalPrice = price;
-      }
-      if (mileageFrom) {
-        params.mileageFrom = mileageFrom;
-      }
-      if (mileageTo) {
-        params.mileageTo = mileageTo;
-      }
-
       const response = await axios.get('/cars', { params });
-      console.log('Fetched cars:', response);
       return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   },
 );

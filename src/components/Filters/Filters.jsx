@@ -7,18 +7,15 @@ import {
   setMileageFrom,
   setMileageTo,
 } from '../../redux/filters/filtersSlice';
-import { selectFilters } from '../../redux/filters/filtersSelectors';
-import { resetCars } from '../../redux/cars/carsSlice';
-import { selectBrands } from '../../redux/filters/filtersSelectors';
+import {
+  selectFilters,
+  selectBrands,
+} from '../../redux/filters/filtersSelectors';
 
 const Filters = ({ inputRef }) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
   const brands = useSelector(selectBrands);
-
-  const handleSearchClick = () => {
-    dispatch(resetCars());
-  };
 
   return (
     <div className={styles.container}>
@@ -63,10 +60,7 @@ const Filters = ({ inputRef }) => {
           />
         </div>
       </div>
-
-      <button className={styles.button} onClick={handleSearchClick}>
-        Search
-      </button>
+      <button className={styles.button}>Search</button>
     </div>
   );
 };

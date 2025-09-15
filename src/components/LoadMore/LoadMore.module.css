@@ -4,7 +4,7 @@
     margin-top: 32px;
 }
 
-.button {
+.loadMoreBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +26,7 @@
     transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.loadMoreBtn:hover {
     background-color: #1e90ff;
 }
 
