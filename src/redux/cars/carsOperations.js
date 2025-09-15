@@ -1,18 +1,35 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../config/apiConfig';
+import axios from 'axios';
+
+axios.defaults.baseURL = API_BASE_URL;
 
 export const fetchCars = createAsyncThunk(
   'cars/fetchCars',
-  async (_, { getState, rejectWithValue }) => {
+  async ({ page, filters }, { rejectWithValue }) => {
     try {
-      const { page, limit } = getState().cars;
-      const queryParams = `?page=${page}&limit=${limit}`;
-      const fullURL = `${API_BASE_URL}/cars?${queryParams}`;
-      const response = await fetch(fullURL);
-      if (!response.ok) throw new Error('Failed to fetch cars');
+      const { brand, price, mileageFrom, mileageTo } = filters;
+      const params = {
+        page,
+        limit: 12,
+      };
 
-      const data = await response.json();
-      return data;
+      if (brand) {
+        params.make = brand;
+      }
+      if (price) {
+        params.rentalPrice = price;
+      }
+      if (mileageFrom) {
+        params.mileageFrom = mileageFrom;
+      }
+      if (mileageTo) {
+        params.mileageTo = mileageTo;
+      }
+
+      const response = await axios.get('/cars', { params });
+      console.log('Fetched cars:', response);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -21,11 +38,10 @@ export const fetchCars = createAsyncThunk(
 
 export const fetchCarById = createAsyncThunk(
   'cars/fetchCarById',
-  async (id, { rejectWithValue }) => {
+  async (carId, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/cars/${id}`);
-      if (!response.ok) throw new Error('Failed to fetch car details');
-      return await response.json();
+      const response = await axios.get(`${API_BASE_URL}/cars/${carId}`);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

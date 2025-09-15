@@ -1,3 +1,4 @@
+// src/components/Filters/Filters.jsx
 import styles from './Filters.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -7,13 +8,17 @@ import {
   setMileageTo,
 } from '../../redux/filters/filtersSlice';
 import { selectFilters } from '../../redux/filters/filtersSelectors';
-import { fetchFilteredCars } from '../../redux/cars/carsOperations';
+import { resetCars } from '../../redux/cars/carsSlice';
 import { selectBrands } from '../../redux/filters/filtersSelectors';
 
 const Filters = ({ inputRef }) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
   const brands = useSelector(selectBrands);
+
+  const handleSearchClick = () => {
+    dispatch(resetCars());
+  };
 
   return (
     <div className={styles.container}>
@@ -59,10 +64,7 @@ const Filters = ({ inputRef }) => {
         </div>
       </div>
 
-      <button
-        className={styles.button}
-        onClick={() => dispatch(fetchFilteredCars(filters))}
-      >
+      <button className={styles.button} onClick={handleSearchClick}>
         Search
       </button>
     </div>
